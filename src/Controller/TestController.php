@@ -16,18 +16,19 @@ class TestController extends AbstractController
     {
 
         // stores an attribute for reuse during a later user request
-        $session->set('foo', 'bar');
+        $session->set('foobar', 'This is session Message');
+        $foobar = $session->get('foobar');
 
-        // gets the attribute set by another controller in another request
-         $foobar = $session->get('foobar');
+
 
         $this->addFlash(
             'notice',
-            'Your changes were saved!'
+            'This is Flash session message!'
         );
 
         return $this->render('test/index.html.twig', [
             'controller_name' => 'TestController',
+            'foobar' => $foobar
         ]);
     }
 }
